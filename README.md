@@ -1,4 +1,4 @@
-# digdu
+# Digdu - Custom API Connector for WordPress 
 
 YAPAY Boleto and Credit Card Integration
 
