@@ -1,0 +1,115 @@
+/**
+Theme Name: Digdu
+Author: Diddu
+Author URI: https://digdu.com.br/
+Description: Digdu Website
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: digdu
+Template: astra
+*/
+* {
+	box-sizing: border-box;
+}
+
+.cartao-credito{
+	display:none;
+}
+#cc-expirationM,
+#cc-expirationA{
+    min-height: 46px !important;
+    border-radius: 4px !important;
+    background: #fafafa !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+}
+.container-checkout {
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	width: 400px;
+	max-width: 100%;
+}
+
+.form-checkout {
+	padding: 30px;	
+}
+
+.formControl2 {
+	position: relative;
+    margin-bottom: 10px;
+	padding-bottom: 20px;
+}
+
+.formControl2 label {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+.formControl2 input {
+	border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-family: inherit;
+	font-size: 14px;
+	padding: 10px;
+	width: 100%;
+}
+
+.formControl2 input:focus {
+	outline: 0;
+	border-color: #777;
+}
+
+.formControl2.success input {
+	border-color: #2ecc71;
+}
+
+.formControl2.error input {
+	border-color: #e74c3c;
+}
+
+.formControl2 i {
+	visibility: hidden;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+.formControl2.success i.fa-check-circle{
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.formControl2.error i.fa-exclamation-circle{
+	color: #e74c3c;
+	visibility: visible;
+}
+
+.formControl2 small {
+	color: #e74c3c;
+	position: absolute;
+	bottom: -3px;
+	left: 2px;
+	visibility: hidden;
+}
+
+.formControl2.error small {
+	visibility: visible;
+}
+
+.form-checkout button {
+	background-color: #8e44ad;
+	border: 2px solid #8e44ad;
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	font-family: inherit;
+	font-size: 16px;
+	padding: 10px;
+	margin-top: 20px;
+	width: 100%;
+}
+
