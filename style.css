@@ -16,6 +16,14 @@ Template: astra
 .cartao-credito{
 	display:none;
 }
+
+.form-check-input[type=checkbox] {
+    border-radius: .25em;
+    width: auto;
+    border: 1px solid;
+    display: -webkit-inline-box;
+	margin-right: 10px;
+}
 #cc-expirationM,
 #cc-expirationA{
     min-height: 46px !important;

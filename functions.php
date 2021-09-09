@@ -250,14 +250,15 @@ $produto = $meta['nome'][0] . ' - '.  $meta['escola_cidade'][0] . ' - '. $meta['
 								</div>	
 
 								<div class="col-12">
-									<div class="">
+									<div class="formControl2">
 										<div class="form-group form-check">
-											<input type="checkbox" class="form-check-input" id="exampleCheck1">
-											<label class="form-check-label" for="exampleCheck1"> Li o <a href="#">contrato</a> e aceito os termos</label>
+											<input type="checkbox" class="form-check-input" id="checkboxCartao">
+											<label class="form-check-label" for="checkboxCartao"> Li o <a href="#">contrato</a> e aceito os termos</label>
+											<small>Error message</small>
 										</div>
 									</div>
 								</div>
-								<button id="submit">Matricular</button>	
+								<button id="submit" onclick="pagCartao()">Matricular</button>	
 
 							</div>
 
@@ -270,20 +271,21 @@ $produto = $meta['nome'][0] . ' - '.  $meta['escola_cidade'][0] . ' - '. $meta['
 						<p>Pagar em 1x com Boleto</p>
 
 						<div class="col-12">
-							<div class="">
+							<div class="formControl2">
 								<div class="form-group form-check">
-									<input type="checkbox" class="form-check-input" id="exampleCheck1">
-									<label class="form-check-label" for="exampleCheck1"> Li o <a href="#">contrato</a> e aceito os termos</label>
+									<input type="checkbox" class="form-check-input" id="checkboxBoleto">
+									<label class="form-check-label" for="checkboxBoleto"> Li o <a href="#">contrato</a> e aceito os termos</label>
+									<small>Error message</small>
 								</div>
 							</div>
 						</div>
 
-						<button id="submit-boleto">Matricular</button>	
+						<button id="submit-boleto" onclick="pagBoleto()">Matricular</button>	
 				</div>
 				</div>
 			</div>
 		</div>
-	  <input type="hidden" id="tipopagamento" name="tipopagamento" value="">	  
+	  <input class="form_data" type="hidden" id="tipopagamento" name="tipopagamento" value="">
 	  <input class="form_data" type="hidden" name="produto" value="<?php echo $produto;?>">
 	  <input class="form_data" type="hidden" name="valorLiquido" value="<?php echo $valorLiquido;?>">
 

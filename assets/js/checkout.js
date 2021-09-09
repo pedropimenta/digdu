@@ -6,15 +6,28 @@ $(function() {
 	$( ".linkpagamento1" ).click(function() {
 		$('#pagamento2').slideUp();
 		$('#pagamento1').slideDown();
+		
 	});
 
 	$( ".linkpagamento2" ).click(function() {
+		let pagamentoChosed = 'boleto';
 		$('#pagamento1').slideUp();
 		$('#pagamento2').slideDown();
 	});
 
 
 });
+
+function pagCartao() {
+	document.getElementById("pagamento2").style.display = 'none';
+	document.getElementById("pagamento1").style.display = 'block';
+	pagamentoChosed = 'cartao'
+}
+function pagBoleto() {
+	document.getElementById("pagamento1").style.display = 'none';
+	document.getElementById("pagamento2").style.display = 'block';
+	pagamentoChosed = 'boleto'
+}
 
 
 
@@ -46,7 +59,7 @@ const parcelas = document.getElementById('parcelas');
 form.addEventListener('submit', e => {
 	e.preventDefault();	
 
-	let status = checkInputs()
+	let status = checkInputs(pagamentoChosed)
 		
 	if(status === true){
 		enviaForm()
@@ -54,7 +67,9 @@ form.addEventListener('submit', e => {
 	
 });
 
-function checkInputs() {
+function checkInputs(pagamentoChosed) {
+
+	//console.log(pagamentoChosed)
 
 	var check = true;
 
@@ -68,6 +83,9 @@ function checkInputs() {
 	const ccexpirationAValue = ccexpirationA.value.trim();    
 	const cccvvValue = cccvv.value.trim();
 	const parcelasValue = parcelas.value.trim();
+
+	let checkboxCartao = document.getElementById('checkboxCartao')
+	let checkboxBoleto = document.getElementById('checkboxBoleto')
 
 	
 	if(nomecompleto.value === '') {
@@ -146,47 +164,74 @@ function checkInputs() {
 		setSuccessFor(uf);
 	}
 
-    if(ccnameValue === '') {
-		check = false
-		setErrorFor(ccname, 'Campo Obrigatório');
-	} else {
-		setSuccessFor(ccname);
+	if(pagamentoChosed == 'cartao'){
+
+		document.getElementById('tipopagamento').value = 'cartao'
+
+
+		if(ccnameValue === '') {
+			check = false
+			setErrorFor(ccname, 'Campo Obrigatório');
+		} else {
+			setSuccessFor(ccname);
+		}
+	
+		if(ccnumberValue === '') {
+			check = false
+			setErrorFor(ccnumber, 'Campo Obrigatório');
+		} else {
+			setSuccessFor(ccnumber);
+		}
+	
+		if(ccexpirationValue === '') {
+			check = false
+			setErrorFor(ccexpirationM, 'Campo Obrigatório');
+		} else {
+			setSuccessFor(ccexpirationM);
+		}
+	
+		if(ccexpirationAValue === '') {
+			check = false
+			setErrorFor(ccexpirationA, 'Campo Obrigatório');
+		} else {
+			setSuccessFor(ccexpirationA);
+		}
+	
+		if(cccvvValue === '') {
+			check = false
+			setErrorFor(cccvv, 'Campo Obrigatório');
+		} else {
+			setSuccessFor(cccvv);
+		}
+	
+		if(parcelasValue === '') {
+			check = false
+			setErrorFor(parcelas, 'Campo Obrigatório');
+		} else {
+			setSuccessFor(parcelas);
+		}
+
+		if(document.getElementById('checkboxCartao').checked){
+			setSuccessFor(checkboxCartao);
+		}else{
+			check = false
+			setErrorFor(checkboxCartao, 'Campo Obrigatório');
+		}
+
 	}
 
-    if(ccnumberValue === '') {
-		check = false
-		setErrorFor(ccnumber, 'Campo Obrigatório');
-	} else {
-		setSuccessFor(ccnumber);
+	if(pagamentoChosed == 'boleto'){
+
+		document.getElementById('tipopagamento').value = 'boleto'
+
+		if(document.getElementById('checkboxBoleto').checked){
+			setSuccessFor(checkboxBoleto);
+		}else{
+			check = false
+			setErrorFor(checkboxBoleto, 'Campo Obrigatório');
+		}
 	}
 
-    if(ccexpirationValue === '') {
-		check = false
-		setErrorFor(ccexpirationM, 'Campo Obrigatório');
-	} else {
-		setSuccessFor(ccexpirationM);
-	}
-
-    if(ccexpirationAValue === '') {
-		check = false
-		setErrorFor(ccexpirationA, 'Campo Obrigatório');
-	} else {
-		setSuccessFor(ccexpirationA);
-	}
-
-    if(cccvvValue === '') {
-		check = false
-		setErrorFor(cccvv, 'Campo Obrigatório');
-	} else {
-		setSuccessFor(cccvv);
-	}
-
-    if(parcelasValue === '') {
-		check = false
-		setErrorFor(parcelas, 'Campo Obrigatório');
-	} else {
-		setSuccessFor(parcelas);
-	}
 	return check
 }
 
@@ -280,7 +325,6 @@ function inputHandler(masks, max, event) {
   let currentYear = new Date().getFullYear();
   let future = currentYear + 50;
 
-  console.log(future)
 
   while (currentYear <= future) {
 	let dateOption = document.createElement('option');
@@ -323,6 +367,8 @@ function inputHandler(masks, max, event) {
 
 			var response = JSON.parse(ajax_request.responseText);
 
+			console.log(pagamentoChosed)
+			
 			console.log(response);
 
 			// if(response.success != '')
