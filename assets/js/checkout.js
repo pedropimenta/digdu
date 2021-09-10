@@ -404,7 +404,7 @@ function inputHandler(masks, max, event) {
 				if(urlBoleto != ''){
 					let elem = document.getElementById("resultado");
 					elem.innerHTML = "<p class='alert alert-info'>O seu boleto foi gerado com sucesso! <br/>Foi enviado para o seu e-mail os dados de acesso a Área de Aluno</p> <br/>";
-					elem.innerHTML += '<p><a class="boleto btn btn-primary" target="_blank" href=\"'+urlBoleto+'\">Dowbload do Boleto</a><p>';
+					elem.innerHTML += '<p><a class="boleto btn btn-primary" target="_blank" href=\"'+urlBoleto+'\">Download do Boleto</a><p>';
 
 				}else{
 					let elem = document.getElementById("resultado");
