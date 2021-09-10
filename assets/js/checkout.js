@@ -359,47 +359,60 @@ function inputHandler(masks, max, event) {
 
 	ajax_request.send(form_data);
 
+	document.getElementById("loader").classList.remove("hidden");
+
 	ajax_request.onreadystatechange = function()
 	{
 		if(ajax_request.readyState == 4 && ajax_request.status == 200)
 		{
-			document.getElementById('submit').disabled = false;
+			document.getElementById('submit').disabled = true;
 
-			var response = JSON.parse(ajax_request.responseText);
+			document.getElementById("loader").classList.add("hidden");
 
-			console.log(pagamentoChosed)
+			document.getElementById("form").classList.add("disable");
+
+			let response = JSON.parse(ajax_request.responseText);
+
+			responsedata = response.data_response
+
+			console.log(responsedata)
+				
+
+			if(pagamentoChosed == 'cartao'){
+
+				let statusTransacao = responsedata.transaction.status_name
+
+				let respostaCartao = responsedata.transaction.payment.payment_response
+
+
+				if(statusTransacao != ''){
+					let elem = document.getElementById("resultado");
+					elem.innerHTML = "<p class='alert alert-info'>"+respostaCartao+"</p> <br/>";
+
+				}else{
+					let elem = document.getElementById("resultado");
+					elem.innerHTML = "<p class='alert alert-danger'>Ocorreu um Erro ao Processar sua Transação, por favor tente novamente</p> <br/>";
+				}
+
+				
+			}
+
+			if(pagamentoChosed == 'boleto'){
+
+				let urlBoleto = responsedata.transaction.payment.url_payment
+
+				if(urlBoleto != ''){
+					let elem = document.getElementById("resultado");
+					elem.innerHTML = "<p class='alert alert-info'>O seu boleto foi gerado com sucesso! <br/>Foi enviado para o seu e-mail os dados de acesso a Área de Aluno</p> <br/>";
+					elem.innerHTML += '<p><a class="boleto btn btn-primary" target="_blank" href=\"'+urlBoleto+'\">Dowbload do Boleto</a><p>';
+
+				}else{
+					let elem = document.getElementById("resultado");
+					elem.innerHTML = "<p class='alert alert-danger'>Ocorreu um Erro ao Processar sua Transação, por favor tente novamente</p> <br/>";
+				}
+							
 			
-			console.log(response);
-
-			// if(response.success != '')
-			// {
-			// 	document.getElementById('sample_form').reset();
-
-			// 	document.getElementById('message').innerHTML = response.success;
-
-			// 	setTimeout(function(){
-
-			// 		document.getElementById('message').innerHTML = '';
-
-			// 	}, 5000);
-
-			// 	document.getElementById('name_error').innerHTML = '';
-
-			// 	document.getElementById('email_error').innerHTML = '';
-
-			// 	document.getElementById('website_error').innerHTML = '';
-			// 	document.getElementById('comment_error').innerHTML = '';
-			// 	document.getElementById('gender_error').innerHTML = '';
-			// }
-			// else
-			// {
-			// 	//display validation error
-			// 	document.getElementById('name_error').innerHTML = response.name_error;
-			// 	document.getElementById('email_error').innerHTML = response.email_error;
-			// 	document.getElementById('website_error').innerHTML = response.website_error;
-			// 	document.getElementById('comment_error').innerHTML = response.comment_error;
-			// 	document.getElementById('gender_error').innerHTML = response.gender_error;
-			// }
+			}
 
 			
 		}

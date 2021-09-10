@@ -77,10 +77,13 @@ $card = RemoveSpecialChar($_POST['cc-number']);
  //$data["transaction"]["shipping_price"] = "";
  //$data["transaction"]["url_notification"] = "";
 
+ $data["transaction"]["customer_ip"] = $_SERVER['REMOTE_ADDR'];
+
+
  if($_POST['tipopagamento'] == 'boleto'){
     $data["payment"]["payment_method_id"] = "6";
  }else{
-    $data["payment"]["payment_method_id"] = "3";
+    $data["payment"]["payment_method_id"] = "4";
     $data["payment"]["split"] = $_POST['parcelas'];
 
     $data["payment"]["card_name"] = $_POST['cc-name'];

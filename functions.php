@@ -291,6 +291,13 @@ $produto = $meta['nome'][0] . ' - '.  $meta['escola_cidade'][0] . ' - '. $meta['
 
 	  
 	</form>
+	<div id="loader" class="lds-dual-ring hidden overlay"></div>
+
+	<div class="container pt-2 p-5">
+	<div class="row">
+			<div class="col-12" id="resultado">
+			</div>
+	</div>
 </div>
 	<?php 
 	 
