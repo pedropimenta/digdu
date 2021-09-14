@@ -132,7 +132,7 @@ $produto = $meta['nome'][0] . ' - '.  $meta['escola_cidade'][0] . ' - '. $meta['
 
 		<div class="col-6">
 			<div class="formControl2">
-				<input class="form_data" name="bairro" readonly type="text" id="bairro" placeholder="Bairro">
+				<input class="form_data" name="bairro" type="text" id="bairro" placeholder="Bairro">
 				<i class="fas fa-check-circle"></i>
 				<i class="fas fa-exclamation-circle"></i>
 				<small>Error message</small>
@@ -141,7 +141,7 @@ $produto = $meta['nome'][0] . ' - '.  $meta['escola_cidade'][0] . ' - '. $meta['
 
 		<div class="col-6">
 			<div class="formControl2">
-				<input class="form_data" name="cidade" readonly type="text" id="cidade" maxlength="2" placeholder="Cidade">
+				<input class="form_data" name="cidade" type="text" id="cidade" maxlength="2" placeholder="Cidade">
 				<i class="fas fa-check-circle"></i>
 				<i class="fas fa-exclamation-circle"></i>
 				<small>Error message</small>
